@@ -24,7 +24,20 @@ const RideSchema = new mongoose.Schema({
   to: {
     type: String,
     required: true,
-  }
+  },
+  bagagge: {
+    type: Boolean,
+  },
+  return: {
+    type: Boolean,
+  },
+  time: {
+    type: String,
+    required: true,
+  },
+  comment: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Ride", RideSchema);
