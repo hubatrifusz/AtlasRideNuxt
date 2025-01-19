@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const rideRoutes = require("./routes/rideRoutes");
+const emailRoutes = require("./routes/emailRoutes"); // Import email routes
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,9 +24,9 @@ mongoose
 
 // Routes
 app.use("/api", rideRoutes);
+app.use("/api", emailRoutes); // Add email routes
 
 // Start Server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });
-
