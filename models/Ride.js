@@ -25,7 +25,7 @@ const RideSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  bagagge: {
+  baggage: {
     type: Boolean,
   },
   return: {

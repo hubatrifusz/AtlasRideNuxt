@@ -24,4 +24,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+// DELETE ALL
+router.delete("/", async (req, res) => {
+  try {
+    await Ride.deleteMany();
+    res.json({ message: "All items deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;
