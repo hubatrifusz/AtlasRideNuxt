@@ -38,6 +38,15 @@ const RideSchema = new mongoose.Schema({
   comment: {
     type: String,
   },
+  passangerNumber: {
+    type: Number,
+  },
+  dogNumber: {
+    type: Number,
+  },
+  box: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("Ride", RideSchema);
