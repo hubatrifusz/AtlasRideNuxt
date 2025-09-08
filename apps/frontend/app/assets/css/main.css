@@ -1,2 +1,12 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme {
+  --ui-primary: #506e95;
+}
+
+* {
+  color: #f6f7f9;
+  font-weight: 500;
+  font-family: 'Satoshi', sans-serif;
+}
