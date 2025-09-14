@@ -1,12 +1,41 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
 
-@theme {
+:root {
   --ui-primary: #506e95;
 }
 
-* {
-  color: #f6f7f9;
+@theme {
+  --color-main-100: #e4e7f0;
+  --color-main-200: #b9bdc9;
+  --color-main-300: #9297a3;
+  --color-main-400: #6c717d;
+  --color-main-500: #474c57;
+  --color-main-600: #2c3039;
+  --color-main-700: #1f2229;
+  --color-main-800: #14161c; /* base */
+  --color-main-900: #0a0b10;
+
+  --color-text-primary: #f5f5f5; /* high contrast on dark base */
+  --color-text-secondary: #c1c1c1; /* medium contrast for less important text */
+  --color-text-tertiary: #8f8f8f; /* subtle text, used on lighter backgrounds */
+  --color-text-inverse: #151517; /* for light backgrounds, inverse of base */
+  --color-text-inverse-secondary: var(--color-main-600); /* for light backgrounds, inverse of base */
+  --color-text-accent: #506e95; /* matches ui-primary for links/buttons */
+}
+
+html,
+body {
   font-weight: 500;
   font-family: 'Satoshi', sans-serif;
+}
+
+h1 {
+  font-family: 'Panchang', serif;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+body {
+  height: 100vh;
 }
