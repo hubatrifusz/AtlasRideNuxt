@@ -10,9 +10,9 @@
       to="/booking"
       >Árajánlatkérés</UButton
     >
-    <HeroSection />
-    <ValuesSection />
-    <PricesSection />
+    <HomeHeroSection />
+    <HomeValuesSection />
+    <HomePricesSection />
   </div>
 </template>
 

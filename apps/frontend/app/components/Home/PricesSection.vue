@@ -1,6 +1,6 @@
 <template>
   <section class="bg-main-200">
-    <div class="md:mx-8 mx-2 md:py-24 px-4 py-12 rounded-t-2xl bg-gradient-to-tr from-main-700 via-main-800 to-main-900 flex flex-col justify-center items-center gap-6">
+    <div class="md:mx-8 mx-2 md:py-48 px-4 py-12 rounded-t-2xl bg-gradient-to-tr from-main-700 via-main-800 to-main-900 flex flex-col justify-center items-center gap-6">
       <h2 class="text-4xl title_font mb-12">Árak</h2>
       <div class="grid md:grid-cols-2 grid-cols-1 gap-10">
         <div class="bg-main-500 rounded-xl shadow-md p-6 text-center">
