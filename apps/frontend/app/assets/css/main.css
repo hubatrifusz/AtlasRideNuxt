@@ -3,6 +3,7 @@
 
 :root {
   --ui-primary: var(--color-accent-500);
+  --ui-secondary: var(--color-main-600);
 
   --ui-bg: var(--color-main-800);
 
@@ -34,12 +35,23 @@
   --color-text-inverse: #151517; /* for light backgrounds, inverse of base */
   --color-text-inverse-secondary: var(--color-main-600); /* for light backgrounds, inverse of base */
   --color-text-accent: #506e95; /* matches ui-primary for links/buttons */
+
+  --color-error-100: #f8d7da; /* very light, for backgrounds or subtle highlights */
+  --color-error-200: #f1aeb5;
+  --color-error-300: #ea858f;
+  --color-error-400: #e35c69;
+  --color-error-500: #dc3343; /* primary error color, used for borders, text, icons */
+  --color-error-600: #b02734; /* slightly darker for hover states or strong emphasis */
+  --color-error-700: #841b26; /* for dark backgrounds, strong emphasis */
+  --color-error-800: #5b1218; /* extreme dark tone if needed */
+  --color-error-900: #33090b; /* darkest tone for outlines, shadows */
 }
 
 html,
 body {
   font-weight: 500;
   font-family: 'Satoshi', sans-serif;
+  scroll-behavior: smooth;
 }
 
 h1 {

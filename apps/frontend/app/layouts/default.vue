@@ -3,9 +3,9 @@
     <header>
       <nav class="md:rounded-md md:h-14 h-16 md:w-160 w-full md:p-[1px] fixed left-1/2 -translate-x-1/2 md:top-8 z-100">
         <div class="md:rounded-md flex items-center justify-center gap-6 h-full w-full bg-main-800 p-1">
-          <UButton variant="ghost" size="xl" class="text-text-primary text-sm cursor-pointer panchang">Rólam</UButton>
+          <UButton variant="ghost" size="xl" class="text-text-primary text-sm panchang cursor-not-allowed" disabled>Rólam</UButton>
           <img src="/logo_feher_2.svg" alt="logo" class="h-full cursor-pointer" @click="$router.push('/')" />
-          <UButton variant="ghost" size="xl" class="text-text-primary text-sm cursor-pointer panchang">Árak</UButton>
+          <UButton variant="ghost" size="xl" class="text-text-primary text-sm panchang" to="/#prices">Árak</UButton>
         </div>
       </nav>
     </header>
@@ -45,5 +45,9 @@ nav {
   font-family: 'Panchang', serif;
   letter-spacing: 1px;
   font-weight: 500;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
 }
 </style>
