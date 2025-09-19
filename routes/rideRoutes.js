@@ -1,6 +1,7 @@
 const express = require("express");
 const Booking = require("../models/Booking");
 const nodemailer = require("nodemailer");
+const sendBookingEmail = require("../utils/sendEmail");
 
 const router = express.Router();
 
@@ -26,41 +27,14 @@ router.get("/", async (req, res) => {
 });
 
 // POST: Create a new booking and send confirmation email
+
 router.post("/", async (req, res) => {
   try {
     const newBooking = new Booking(req.body);
     const savedBooking = await newBooking.save();
 
-    const emailData = {
-      to: savedBooking.email,
-      subject: "Atlas Ride ajánlatkérés visszaigazolás",
-      html: `<div>
-        <h2>Ajánlatkérés megerősítése – Köszönjük, hogy minket választott!</h2>
-        <p>Kedves ${savedBooking.name}!</p>
-        <p>Örömmel értesítjük, hogy az ajánlatkérése sikeresen rögzítésre került. Az alábbiakban találja a részleteket:</p>
-        <p><strong>Az ajánlatkérés adatai:</strong></p>
-        <ul>
-            <li><strong>Indulás időpontja:</strong> ${
-              savedBooking.departureDate
-            }</li>
-            <li><strong>Indulási hely:</strong> ${
-              savedBooking.departureLocation
-            }</li>
-            <li><strong>Célállomás:</strong> ${
-              savedBooking.destinationLocation
-            }</li>
-        </ul>
-        <p>Bármilyen kérdés esetén: <b>info@atlasride.hu</b> vagy <b>+36 70 600 5522</b></p>
-        <p>Üdvözlettel,<br>Atlas Ride</p>
-      </div>`,
-    };
-
-    await transporter.sendMail({
-      from: '"Atlas Ride" <info@atlasride.hu>',
-      to: emailData.to,
-      subject: emailData.subject,
-      html: emailData.html,
-    });
+    // Send emails to customer and admin
+    await sendBookingEmail(savedBooking);
 
     res.status(201).json(savedBooking);
   } catch (err) {
