@@ -38,13 +38,10 @@ const form = ref({
   destinationLocation: '',
   takeoffTime: '',
   flightNumber: '',
-  return: false,
+  return: false as boolean,
   returnLocation: '',
   returnDate: null as CalendarDate | null,
   returnTime: '',
-  returnDestionationLocation: '',
-  returnDepartureDate: null as CalendarDate | null,
-  returnDepartureTime: '',
 });
 
 function chooseType(type: string) {
@@ -63,16 +60,21 @@ function goNext() {
     currentStep.value += 1;
   }
 }
+
+function handleConfirm(formData: any) {
+  console.log('Confirmed booking:', formData);
+  // maybe call API or go to next step
+}
 </script>
 
 <template>
   <div class="w-screen min-h-screen flex flex-col items-center justify-between bg-radial-[at_50%_0%] from-main-700 to-main-900 pt-32 pb-18">
-    <UStepper :items="stepperItems" v-model="currentStep" class="w-full" :disabled="currentStep === 0"/>
+    <UStepper :items="stepperItems" v-model="currentStep" class="w-full" :disabled="currentStep === 0" />
 
     <BookingStepChooseType v-if="currentStep == 0" @select="chooseType" />
     <BookingStepPersonal v-if="currentStep == 1" v-model:form="form" />
     <BookingStepTravelDetails v-if="currentStep == 2" v-model:form="form" />
-    <BookingStepConfirmation v-if="currentStep == 3" v-model:form="form" />
+    <BookingStepConfirmation v-if="currentStep == 3" v-model:form="form" @confirm="handleConfirm" />
 
     <!-- Action buttons -->
     <div v-if="currentStep != 0 && currentStep != 3" class="w-full flex justify-between md:px-46 px-4">

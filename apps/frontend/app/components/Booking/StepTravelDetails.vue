@@ -88,28 +88,22 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
         }"
       >
         <UButton size="xl" icon="i-lucide-calendar" class="text-text-primary md:w-1/2 w-full" color="secondary">
-          {{ props.form.returnDepartureDate ? df.format(props.form.returnDepartureDate.toDate(getLocalTimeZone())) : 'Válassza ki a visszaút dátumát' }}
+          {{ props.form.returnDate ? df.format(props.form.returnDate.toDate(getLocalTimeZone())) : 'Válassza ki a visszaút dátumát' }}
         </UButton>
         <template #content>
-          <UCalendar
-            :model-value="props.form.returnDepartureDate"
-            :year-controls="false"
-            size="lg"
-            :min-value="minDate"
-            @update:model-value="updateField('returnDepartureDate', $event)"
-          />
+          <UCalendar :model-value="props.form.returnDate" :year-controls="false" size="lg" :min-value="minDate" @update:model-value="updateField('returnDate', $event)" />
         </template>
       </UPopover>
 
       <UInput
         v-maska="'##:##'"
-        :model-value="props.form.departureTime"
+        :model-value="props.form.returnTime"
         trailing-icon="i-lucide-timer"
-        label="Visszaút indulási idő"
+        label="Visszaút indulási ideje"
         placeholder="Visszaút indulási ideje"
         size="xl"
         class="md:w-1/2 w-full"
-        @update:model-value="updateField('return', $event)"
+        @update:model-value="updateField('returnTime', $event)"
       />
     </div>
 
@@ -119,8 +113,8 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
       <UInput
         :model-value="props.form.flightNumber"
         trailing-icon="i-lucide-hash"
-        label="Repülőgép száma"
-        placeholder="Repülőgép száma"
+        label="Repülőgép járatszáma"
+        placeholder="Repülőgép járatszáma"
         size="xl"
         class="md:w-1/2 w-full"
         @update:model-value="updateField('flightNumber', $event)"
