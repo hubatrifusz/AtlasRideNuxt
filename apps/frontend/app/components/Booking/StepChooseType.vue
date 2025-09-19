@@ -1,0 +1,52 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'select', value: string): void;
+}>();
+
+function selectType(type: string) {
+  emit('select', type);
+}
+</script>
+
+<template>
+  <div class="w-full flex md:flex-row flex-col items-center justify-center gap-10 md:p-12 p-18 md:px-72">
+    <div class="card_border flex-1 md:aspect-[3/4] w-full aspect-[2/1]" @click="selectType('céges')">
+      <div class="card">Céges</div>
+    </div>
+    <div class="card_border flex-1 md:aspect-[3/4] w-full aspect-[2/1]" @click="selectType('reptéri')">
+      <div class="card">Reptéri</div>
+    </div>
+    <div class="card_border flex-1 md:aspect-[3/4] w-full aspect-[2/1]" @click="selectType('egyéb')">
+      <div class="card">Egyéb</div>
+    </div>
+  </div>
+</template>
+
+<style>
+.card {
+  background-color: var(--color-main-800);
+  border-radius: calc(var(--ui-radius) * 1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--text-xl) /* 1.5rem = 24px */;
+  line-height: var(--tw-leading, var(--text-xl--line-height) /* calc(2 / 1.5) ≈ 1.3333 */);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+.card_border {
+  background: linear-gradient(to bottom, var(--color-main-600), var(--color-main-800));
+  border-radius: calc(var(--ui-radius) * 1.5);
+  padding: 2px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 32px var(--color-accent-500);
+    background: linear-gradient(to bottom, var(--color-main-400), var(--color-main-700));
+    transform: scale(1.05);
+  }
+}
+</style>
