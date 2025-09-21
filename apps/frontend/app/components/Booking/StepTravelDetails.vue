@@ -131,7 +131,7 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
       />
     </div>
 
-    <div class="md:w-1/2">
+    <div class="md:w-1/2 w-full">
       <UTextarea :model-value="props.form.comment" size="xl" placeholder="Megjegyzés" class="w-full" @update:model-value="updateField('comment', $event)" />
     </div>
   </div>
