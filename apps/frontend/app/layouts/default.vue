@@ -13,7 +13,7 @@
       <slot />
     </main>
     <footer>
-      <div class="bg-main-800 text-text-primary text-center p-12 h-70 flex flex-row justify-center items-start">
+      <div class="bg-main-800 text-text-primary text-center p-12 h-70 flex flex-row justify-center items-start relative">
         <div class="flex flex-col w-fit">
           <a href="mailto:info@atlasride.hu">
             <UButton variant="ghost" class="text-text-primary cursor-pointer" icon="i-lucide-mail"> info@atlasride.hu </UButton>
@@ -27,6 +27,7 @@
             <UButton variant="ghost" class="text-text-primary cursor-pointer" icon="i-lucide-facebook"> Atlas Ride Facebook </UButton>
           </a>
         </div>
+        <div class="absolute bottom-4 left-4 text-text-tertiary">v.1.01</div>
       </div>
     </footer>
   </div>
