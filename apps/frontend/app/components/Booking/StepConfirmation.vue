@@ -1,17 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{ form: any }>();
-
-const emit = defineEmits<{
-  (e: 'confirm', value: any): void;
-}>();
-
-function confirmBooking() {
-  emit('confirm', props.form);
-}
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 w-full justify-center items-center">
+  <div class="flex flex-col gap-4 w-full justify-center items-center">
     <div class="text-text-secondary text-lg">
       <div v-if="props.form.rideType != 'céges'">
         Teljes név: <span>{{ props.form.name }}</span>
@@ -72,17 +64,11 @@ function confirmBooking() {
           Tervezett felszállási idő: <span>{{ props.form.takeoffTime }}</span>
         </div>
       </div>
-    </div>
 
-    <UButton
-      color="primary"
-      size="xl"
-      trailing-icon="i-lucide-calendar-check"
-      class="px-12 py-4 text-xl text-text-inverse z-100 shadow-xl shadow-black/30 mt-12"
-      @click="confirmBooking"
-    >
-      Megerősítés
-    </UButton>
+      <div>
+        Megjegyzés: <span>{{ props.form.comment }}</span>
+      </div>
+    </div>
   </div>
 </template>
 

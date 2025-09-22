@@ -12,7 +12,7 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
 
 <template>
   <!-- For "reptéri" or "egyéb" -->
-  <div v-if="form.rideType == 'reptéri' || form.rideType == 'egyéb'" class="flex flex-col gap-2 w-full justify-center items-center px-4">
+  <div v-if="form.rideType == 'reptéri' || form.rideType == 'egyéb'" class="flex flex-col gap-4 w-full justify-center items-center px-4">
     <UInput
       :model-value="form.name"
       trailing-icon="i-lucide-user"
@@ -43,7 +43,7 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
   </div>
 
   <!-- For "céges" -->
-  <div v-if="form.rideType == 'céges'" class="flex flex-col gap-2 w-full justify-center items-center px-4">
+  <div v-if="form.rideType == 'céges'" class="flex flex-col gap-4 w-full justify-center items-center px-4">
     <UInput
       :model-value="form.companyName"
       trailing-icon="i-lucide-building-2"

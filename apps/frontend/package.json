@@ -16,6 +16,7 @@
     "@nuxt/fonts": "0.11.4",
     "@nuxt/ui": "^3.3.3",
     "@tailwindcss/vite": "^4.1.13",
+    "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "maska": "^3.2.0",
     "nuxt": "^4.1.1",
     "tailwindcss": "^4.1.13",

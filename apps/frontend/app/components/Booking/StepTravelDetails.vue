@@ -20,7 +20,7 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 w-full justify-center items-center px-4">
+  <div class="flex flex-col gap-4 w-full justify-center items-center px-4">
     <UInput
       :model-value="props.form.departureLocation"
       trailing-icon="i-lucide-map-pin-house"
@@ -79,7 +79,7 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
     </div>
 
     <!-- Retúr esetén -->
-    <div v-if="props.form.return" class="w-full flex flex-col items-center gap-2">
+    <div v-if="props.form.return" class="w-full flex flex-col items-center gap-4">
       <UPopover
         :content="{
           align: 'center',
@@ -129,6 +129,10 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
         class="md:w-1/2 w-full"
         @update:model-value="updateField('takeoffTime', $event)"
       />
+    </div>
+
+    <div class="md:w-1/2 w-full">
+      <UTextarea :model-value="props.form.comment" size="xl" placeholder="Megjegyzés" class="w-full" @update:model-value="updateField('comment', $event)" />
     </div>
   </div>
 </template>
