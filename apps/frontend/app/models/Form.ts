@@ -1,3 +1,5 @@
+import { CalendarDate } from '@internationalized/date';
+
 export interface Form {
   _id?: string;
   rideType: string;
@@ -5,19 +7,20 @@ export interface Form {
   companyName?: string;
   email: string;
   phone: string;
-  passengers?: number;
+  passengers?: string;
   homeAddress?: string;
   departureLocation: string;
-  departureDate: string; // ISO string instead of Date for transport
+  departureDate: CalendarDate | null;
   departureTime?: string;
   destinationLocation: string;
   takeoffTime?: string;
   flightNumber?: string;
   return?: boolean;
   returnLocation?: string;
-  returnDate?: string; // same reason, string is safer for frontend
+  returnDate?: CalendarDate | null;
   returnTime?: string;
   createdAt?: string;
   updatedAt?: string;
+  comment?: string;
   __v?: number;
 }
