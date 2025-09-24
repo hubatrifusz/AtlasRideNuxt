@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { StepperItem } from '@nuxt/ui';
 import { CalendarDate } from '@internationalized/date';
 import { ref } from 'vue';
 import { useRouter } from '#app';
@@ -7,7 +6,7 @@ import { useBooking } from '~/composables/useBooking';
 const { postNewBooking } = useBooking();
 const router = useRouter();
 
-const stepperItems = ref<StepperItem[]>([
+const stepperItems = ref([
   {
     title: 'Utazás típusa',
     icon: 'i-lucide-luggage',
