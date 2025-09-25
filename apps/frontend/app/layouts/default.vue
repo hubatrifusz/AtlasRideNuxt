@@ -27,7 +27,7 @@
             <UButton variant="ghost" class="text-text-primary cursor-pointer" icon="i-lucide-facebook"> Atlas Ride Facebook </UButton>
           </a>
         </div>
-        <div class="absolute bottom-4 left-4 text-text-tertiary">v2.03</div>
+        <div class="absolute bottom-4 left-4 text-text-tertiary">v2.02</div>
       </div>
     </footer>
   </div>
