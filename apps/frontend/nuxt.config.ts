@@ -22,6 +22,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Atlas Ride - Prémium Reptértranszfer Szolgáltatás',
+      htmlAttrs: {
+        lang: 'hu',
+      },
       script: [
         {
           innerHTML: `
@@ -35,6 +39,18 @@ export default defineNuxtConfig({
             })(window,document,'script','dataLayer','GTM-WCLGKQ3P');
           `,
           type: 'text/javascript',
+        },
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-JCVH01ZQ5W',
+          async: true,
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JCVH01ZQ5W');
+          `,
         },
       ],
       noscript: [

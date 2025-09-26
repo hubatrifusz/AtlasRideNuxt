@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
+    "@nuxt/scripts": "^0.12.1",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "eslint": "^9.34.0",
