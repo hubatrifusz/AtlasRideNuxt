@@ -3,7 +3,7 @@ name: Deploy Frontend to Google Cloud Storage
 on:
   push:
     branches:
-      - main
+      - production
     paths:
       - 'apps/frontend/**' # Only trigger if frontend files change
 
