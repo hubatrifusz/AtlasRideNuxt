@@ -50,7 +50,14 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
         props.form.departureDate ? df.format(props.form.departureDate.toDate(getLocalTimeZone())) : 'Válassza ki az indulás napját'
       }}</UButton>
       <template #content>
-        <UCalendar :model-value="props.form.departureDate" :year-controls="false" size="lg" :min-value="minDate" @update:model-value="updateField('departureDate', $event)" />
+        <UCalendar
+          :model-value="props.form.departureDate"
+          :year-controls="false"
+          size="lg"
+          :min-value="minDate"
+          @update:model-value="updateField('departureDate', $event)"
+          locale="hu"
+        />
       </template>
     </UPopover>
     <UInput
