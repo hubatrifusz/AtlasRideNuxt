@@ -4,21 +4,13 @@ export default defineNuxtConfig({
   ssr: false,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/fonts',
-    [
-      '@zadigetvoltaire/nuxt-gtm',
-      {
-        id: 'GTM-WCLGKQ3P',
-        pageTracking: true,
-        pageViewEventName: 'nuxtRoute',
-      },
-    ],
-  ],
+  modules: ['@nuxt/ui', '@nuxt/fonts', '@gtm-support/nuxt-gtm'],
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
+  },
+  gtm: {
+    id: 'GTM-WCLGKQ3P',
   },
   app: {
     head: {
