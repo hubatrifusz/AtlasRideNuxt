@@ -17,6 +17,28 @@ const emit = defineEmits<{
 function updateField<K extends keyof typeof props.form>(key: K, value: any) {
   emit('update:form', { ...props.form, [key]: value });
 }
+
+function beforeEnter(el: Element) {
+  (el as HTMLElement).style.height = '0';
+  (el as HTMLElement).style.opacity = '0';
+}
+
+function enter(el: Element) {
+  (el as HTMLElement).style.transition = 'height 0.3s ease, opacity 0.3s ease';
+  (el as HTMLElement).style.height = (el as HTMLElement).scrollHeight + 'px';
+  (el as HTMLElement).style.opacity = '1';
+}
+
+function beforeLeave(el: Element) {
+  (el as HTMLElement).style.height = (el as HTMLElement).scrollHeight + 'px';
+  (el as HTMLElement).style.opacity = '1';
+}
+
+function leave(el: Element) {
+  (el as HTMLElement).style.transition = 'height 0.2s ease, opacity 0.2s ease';
+  (el as HTMLElement).style.height = '0';
+  (el as HTMLElement).style.opacity = '0';
+}
 </script>
 
 <template>
@@ -110,40 +132,42 @@ function updateField<K extends keyof typeof props.form>(key: K, value: any) {
     </div>
 
     <!-- Retúr esetén -->
-    <div v-if="props.form.return" class="w-full flex flex-col items-center gap-4">
-      <UPopover
-        :content="{
-          align: 'center',
-          side: 'bottom',
-          sideOffset: 2,
-        }"
-      >
-        <UButton size="xl" icon="i-lucide-calendar" class="text-text-primary md:w-1/2 w-full" color="secondary">
-          {{ props.form.returnDate ? df.format(props.form.returnDate.toDate(getLocalTimeZone())) : 'Válassza ki a visszaút dátumát' }}
-        </UButton>
-        <template #content>
-          <UCalendar
-            :model-value="props.form.returnDate"
-            :year-controls="false"
-            size="lg"
-            :min-value="minDate"
-            @update:model-value="updateField('returnDate', $event)"
-            locale="hu"
-          />
-        </template>
-      </UPopover>
+    <Transition name="fade-slide" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
+      <div v-if="props.form.return" class="w-full flex flex-col items-center gap-4">
+        <UPopover
+          :content="{
+            align: 'center',
+            side: 'bottom',
+            sideOffset: 2,
+          }"
+        >
+          <UButton size="xl" icon="i-lucide-calendar" class="text-text-primary md:w-1/2 w-full" color="secondary">
+            {{ props.form.returnDate ? df.format(props.form.returnDate.toDate(getLocalTimeZone())) : 'Válassza ki a visszaút dátumát' }}
+          </UButton>
+          <template #content>
+            <UCalendar
+              :model-value="props.form.returnDate"
+              :year-controls="false"
+              size="lg"
+              :min-value="minDate"
+              @update:model-value="updateField('returnDate', $event)"
+              locale="hu"
+            />
+          </template>
+        </UPopover>
 
-      <UInput
-        v-maska="'##:##'"
-        :model-value="props.form.returnTime"
-        trailing-icon="i-lucide-timer"
-        label="Visszaút indulási ideje"
-        placeholder="Visszaút indulási ideje"
-        size="xl"
-        class="md:w-1/2 w-full"
-        @update:model-value="updateField('returnTime', $event)"
-      />
-    </div>
+        <UInput
+          v-maska="'##:##'"
+          :model-value="props.form.returnTime"
+          trailing-icon="i-lucide-timer"
+          label="Visszaút indulási ideje"
+          placeholder="Visszaút indulási ideje"
+          size="xl"
+          class="md:w-1/2 w-full"
+          @update:model-value="updateField('returnTime', $event)"
+        />
+      </div>
+    </Transition>
 
     <div class="md:w-1/2 w-full">
       <UTextarea :model-value="props.form.comment" size="xl" placeholder="Megjegyzés" class="w-full" @update:model-value="updateField('comment', $event)" />
