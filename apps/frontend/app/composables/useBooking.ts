@@ -2,8 +2,7 @@ import { CalendarDate } from '@internationalized/date';
 
 export function useBooking() {
   function calendarDateToISO(cd: CalendarDate | null): string | null {
-    if (!cd) return null;
-    return new Date(cd.year, cd.month - 1, cd.day).toISOString();
+    return cd instanceof CalendarDate ? cd.toString() : null;
   }
 
   const postNewBooking = async (form: any) => {
