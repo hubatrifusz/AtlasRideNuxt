@@ -34,11 +34,16 @@ export default defineNuxtConfig({
           async: true,
         },
         {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-MCV5T82RZ4',
+          async: true,
+        },
+        {
           innerHTML: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-JCVH01ZQ5W');
+            gtag('config', 'G-MCV5T82RZ4');
           `,
         },
       ],
