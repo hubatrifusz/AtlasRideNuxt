@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run tests and capture the output to check for failures
+if pnpm run test:ci | grep -q "FAIL\|failed\|Error:"; then
+  echo "❌ Tests failed! Push aborted."
+  exit 1
+else
+  echo "✅ Tests passed!"
+fi
+
+# Run type checking
+echo "🔍 Running type checks..."
+if ! pnpm run check-types; then
+  echo "❌ Type checks failed! Push aborted."
+  exit 1
+fi
+
+echo "✅ Pre-push checks completed successfully!"

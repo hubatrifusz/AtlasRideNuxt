@@ -5,23 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/fonts',
-    // ✅ nuxt-gtag module
-    [
-      'nuxt-gtag',
-      {
-        id: 'G-JCVH01ZQ5W',
-        enabled: true,
-        config: {
-          anonymize_ip: true,
-        },
-      },
-    ],
-  ],
-
+  modules: ['@nuxt/ui', '@nuxt/fonts', '@nuxt/test-utils/module', 'nuxt-gtag'],
   css: ['~/assets/css/main.css'],
+
+  gtag: {
+    id: 'G-JCVH01ZQ5W'
+  },
 
   vite: {
     plugins: [tailwindcss()],
@@ -30,7 +19,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Atlas Ride - Prémium Reptértranszfer Szolgáltatás',
-      htmlAttrs: { lang: 'hu' },
+      htmlAttrs: {
+        lang: 'hu',
+      },
     },
   },
 });

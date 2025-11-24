@@ -1,10 +1,13 @@
 <script setup lang="ts">
-const emit = defineEmits<{
-  (e: 'select', value: string): void;
-}>();
+const emit = defineEmits(['selectType']);
+
+const stepForm = ref({
+  rideType: '',
+});
 
 function selectType(type: string) {
-  emit('select', type);
+  stepForm.value.rideType = type;
+  emit('selectType', type);
 }
 </script>
 
@@ -29,8 +32,8 @@ function selectType(type: string) {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--text-xl) /* 1.5rem = 24px */;
-  line-height: var(--tw-leading, var(--text-xl--line-height) /* calc(2 / 1.5) ≈ 1.3333 */);
+  font-size: var(--text-xl);
+  line-height: var(--tw-leading, var(--text-xl--line-height));
   color: var(--color-text-primary);
   cursor: pointer;
   height: 100%;
