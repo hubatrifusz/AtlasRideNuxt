@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const rideRoutes = require("./routes/rideRoutes");
-const emailRoutes = require("./routes/emailRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,7 +20,6 @@ mongoose
 
 // Routes
 app.use("/api", rideRoutes);
-app.use("/api", emailRoutes);
 
 // Start server
 app.listen(PORT, () => {

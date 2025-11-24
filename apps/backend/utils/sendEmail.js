@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   host: "smtp.rackhost.hu",
   port: 465,
-  secure: true, // true for port 465
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -25,7 +25,9 @@ async function sendBookingEmail(booking) {
       <p>Örömmel értesítjük, hogy az ajánlatkérése sikeresen rögzítésre került. Az alábbiakban találja a részleteket:</p>
       <p><strong>Az ajánlatkérés adatai:</strong></p>
       <ul>
-          <li><strong>Indulás időpontja:</strong> ${booking.departureDate}</li>
+          <li><strong>Indulás időpontja:</strong> ${new Date(
+            booking.departureDate
+          ).toLocaleDateString("hu-HU")}, ${booking.departureTime}</li>
           <li><strong>Indulási hely:</strong> ${booking.departureLocation}</li>
           <li><strong>Célállomás:</strong> ${booking.destinationLocation}</li>
       </ul>
@@ -35,21 +37,52 @@ async function sendBookingEmail(booking) {
   };
 
   // Admin email
+  const fields = [
+    ["Utazás típusa", booking.rideType],
+    ["Név", booking.name],
+    ["Cégnév", booking.companyName],
+    ["Email cím", booking.email],
+    ["Telefonszám", booking.phone],
+    ["Utasok száma", booking.passengers],
+    ["Lakcím", booking.homeAddress],
+    ["Indulási hely", booking.departureLocation],
+    [
+      "Indulási dátum",
+      booking.departureDate
+        ? new Date(booking.departureDate).toLocaleDateString("hu-HU")
+        : "",
+    ],
+    ["Indulási időpont", booking.departureTime],
+    ["Célállomás", booking.destinationLocation],
+    ["Felszállás időpont", booking.takeoffTime],
+    ["Járatszám", booking.flightNumber],
+    ["Visszaút", booking.return ? "Igen" : ""],
+    ["Visszaút helyszíne", booking.returnLocation],
+    [
+      "Visszaút dátuma",
+      booking.returnDate
+        ? new Date(booking.returnDate).toLocaleDateString("hu-HU")
+        : "",
+    ],
+    ["Visszaút időpontja", booking.returnTime],
+    ["Megjegyzés", booking.comment],
+  ];
+
+  const listItems = fields
+    .filter(([_, value]) => value && value !== "") // only keep non-empty
+    .map(([label, value]) => `<li><strong>${label}:</strong> ${value}</li>`)
+    .join("");
+
   const adminEmailData = {
     to: "info@atlasride.hu",
     subject: `Új ajánlatkérés - ${booking.name}`,
-    html: `<p>Új ajánlatkérés érkezett, az alábbi adatokkal:</p>
-      <p><strong>Ajánlatkérés adatai:</strong></p>
-      <ul>
-          <li><strong>Név:</strong> ${booking.name}</li>
-          <li><strong>Email cím:</strong> ${booking.email}</li>
-          <li><strong>Telefonszám:</strong> ${booking.phone}</li>
-          <li><strong>Indulási hely:</strong> ${booking.departureLocation}</li>
-          <li><strong>Célállomás:</strong> ${booking.destinationLocation}</li>
-          <li><strong>Visszaút:</strong> ${booking.return ? "Igen" : "Nem"}</li>
-          <li><strong>Időpont:</strong> ${booking.departureDate}</li>
-          <li><strong>Megjegyzés:</strong> ${booking.comment || "N/A"}</li>
-      </ul>`,
+    html: `
+    <p>Új ajánlatkérés érkezett, az alábbi adatokkal:</p>
+    <p><strong>Ajánlatkérés adatai:</strong></p>
+    <ul>
+      ${listItems}
+    </ul>
+  `,
   };
 
   // Send both emails concurrently

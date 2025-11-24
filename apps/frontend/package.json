@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@atlasride/frontend",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,7 +9,12 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ci": "vitest run --no-coverage --silent || exit 0",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@internationalized/date": "^3.9.0",

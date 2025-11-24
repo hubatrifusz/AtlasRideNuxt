@@ -59,6 +59,9 @@ const BookingSchema = new mongoose.Schema({
   returnTime: {
     type: String,
   },
+  comment: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("booking", BookingSchema);

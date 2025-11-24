@@ -5,7 +5,11 @@ export default defineVitestConfig({
         environment: 'nuxt',
         environmentOptions: {
             nuxt: {
-                domEnvironment: 'happy-dom'
+                domEnvironment: 'happy-dom',
+                mock: {
+                    intersectionObserver: true,
+                    indexedDb: true
+                }
             }
         },
         coverage: {
@@ -19,6 +23,14 @@ export default defineVitestConfig({
                 '**/*.d.ts'
             ]
         },
-        globals: true
+        globals: true,
+        setupFiles: ['./test/setup.ts'],
+        pool: 'threads',
+        onConsoleLog: (log) => {
+            // Suppress specific Nuxt warnings in tests
+            if (log.includes('transformMode') || log.includes('localstorage-file') || log.includes('Suspense')) {
+                return false
+            }
+        }
     }
 })
