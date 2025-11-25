@@ -19,7 +19,7 @@
   "dependencies": {
     "@internationalized/date": "^3.9.0",
     "@nuxt/fonts": "0.11.4",
-    "@nuxt/ui": "^3.3.3",
+    "@nuxt/ui": "^4.2.1",
     "@tailwindcss/vite": "^4.1.13",
     "maska": "^3.2.0",
     "nuxt": "^4.1.2",

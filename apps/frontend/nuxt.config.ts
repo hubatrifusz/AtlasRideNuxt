@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   gtag: {
-    id: 'G-JCVH01ZQ5W'
+    id: 'GT-WF3BNSGC',
+    initMode: 'manual',
   },
 
   vite: {

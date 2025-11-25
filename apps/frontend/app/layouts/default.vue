@@ -11,6 +11,7 @@
     </header>
     <main>
       <slot />
+      <CookieControl/>
     </main>
     <footer>
       <div class="bg-main-800 text-text-primary text-center p-12 h-70 flex flex-row justify-center items-start relative">
